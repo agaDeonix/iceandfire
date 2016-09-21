@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">IceAndFire</string>
+
+    <string name="loading">Загрузка…</string>
+    <string name="empty_repositories">Книги не удалось загрузить</string>
 </resources>
