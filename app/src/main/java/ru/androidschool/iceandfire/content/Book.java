@@ -4,8 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
-
+import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -22,7 +21,7 @@ public class Book extends RealmObject {
     @SerializedName("isbn")
     private String mIsbn;
     @SerializedName("authors")
-    private List<String> mAuthors;
+    private RealmList<RealmString> mAuthors;
     @SerializedName("numberOfPages")
     private Integer mNumberOfPages;
     @SerializedName("publisher")
@@ -34,23 +33,9 @@ public class Book extends RealmObject {
     @SerializedName("released")
     private String mReleased;
     @SerializedName("characters")
-    private List<String> mCharacters;
+    private RealmList<RealmString> mCharacters;
     @SerializedName("povCharacters")
-    private List<String> mPovCharacters;
-
-    public Book(@NonNull String mUrl, @NonNull String mName, @NonNull String mIsbn, List<String> mAuthors, Integer mNumberOfPages, String mPublisher, String mCountry, String mMediaType, String mReleased, List<String> mCharacters, List<String> mPovCharacters) {
-        this.mUrl = mUrl;
-        this.mName = mName;
-        this.mIsbn = mIsbn;
-        this.mAuthors = mAuthors;
-        this.mNumberOfPages = mNumberOfPages;
-        this.mPublisher = mPublisher;
-        this.mCountry = mCountry;
-        this.mMediaType = mMediaType;
-        this.mReleased = mReleased;
-        this.mCharacters = mCharacters;
-        this.mPovCharacters = mPovCharacters;
-    }
+    private RealmList<RealmString> mPovCharacters;
 
     @NonNull
     public String getUrl() {
@@ -79,11 +64,11 @@ public class Book extends RealmObject {
         this.mIsbn = mIsbn;
     }
 
-    public List<String> getAuthors() {
+    public RealmList<RealmString> getAuthors() {
         return mAuthors;
     }
 
-    public void setAuthors(List<String> mAuthors) {
+    public void setAuthors(RealmList<RealmString> mAuthors) {
         this.mAuthors = mAuthors;
     }
 
@@ -127,19 +112,19 @@ public class Book extends RealmObject {
         this.mReleased = mReleased;
     }
 
-    public List<String> getCharacters() {
+    public RealmList<RealmString> getCharacters() {
         return mCharacters;
     }
 
-    public void setCharacters(List<String> mCharacters) {
+    public void setCharacters(RealmList<RealmString> mCharacters) {
         this.mCharacters = mCharacters;
     }
 
-    public List<String> getPovCharacters() {
+    public RealmList<RealmString> getPovCharacters() {
         return mPovCharacters;
     }
 
-    public void setPovCharacters(List<String> mPovCharacters) {
+    public void setPovCharacters(RealmList<RealmString> mPovCharacters) {
         this.mPovCharacters = mPovCharacters;
     }
 }

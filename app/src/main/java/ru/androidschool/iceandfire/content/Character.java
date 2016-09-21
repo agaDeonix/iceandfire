@@ -4,8 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
-
+import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -27,11 +26,11 @@ public class Character extends RealmObject {
     @SerializedName("born")
     private String mBorn;
     @SerializedName("died")
-    private List<String> mDied;
+    private RealmList<RealmString> mDied;
     @SerializedName("titles")
-    private List<String> mTitles;
+    private RealmList<RealmString> mTitles;
     @SerializedName("aliases")
-    private List<String> mAliases;
+    private RealmList<RealmString> mAliases;
     @SerializedName("father")
     private String mFather;
     @SerializedName("mother")
@@ -39,34 +38,15 @@ public class Character extends RealmObject {
     @SerializedName("spouse")
     private String mSpouse;
     @SerializedName("allegiances")
-    private List<String> mAllegiances;
+    private RealmList<RealmString> mAllegiances;
     @SerializedName("books")
-    private List<String> mBooks;
+    private RealmList<RealmString> mBooks;
     @SerializedName("povBooks")
-    private List<String> mPovBooks;
+    private RealmList<RealmString> mPovBooks;
     @SerializedName("tvSeries")
-    private List<String> mTvSeries;
+    private RealmList<RealmString> mTvSeries;
     @SerializedName("playedBy")
-    private List<String> mPlayedBy;
-
-    public Character(@NonNull String mUrl, @NonNull String mName, String mGender, String mCulture, String mBorn, List<String> mDied, List<String> mTitles, List<String> mAliases, String mFather, String mMother, String mSpouse, List<String> mAllegiances, List<String> mBooks, List<String> mPovBooks, List<String> mTvSeries, List<String> mPlayedBy) {
-        this.mUrl = mUrl;
-        this.mName = mName;
-        this.mGender = mGender;
-        this.mCulture = mCulture;
-        this.mBorn = mBorn;
-        this.mDied = mDied;
-        this.mTitles = mTitles;
-        this.mAliases = mAliases;
-        this.mFather = mFather;
-        this.mMother = mMother;
-        this.mSpouse = mSpouse;
-        this.mAllegiances = mAllegiances;
-        this.mBooks = mBooks;
-        this.mPovBooks = mPovBooks;
-        this.mTvSeries = mTvSeries;
-        this.mPlayedBy = mPlayedBy;
-    }
+    private RealmList<RealmString> mPlayedBy;
 
     @NonNull
     public String getUrl() {
@@ -110,27 +90,27 @@ public class Character extends RealmObject {
         this.mBorn = mBorn;
     }
 
-    public List<String> getDied() {
+    public RealmList<RealmString> getDied() {
         return mDied;
     }
 
-    public void setDied(List<String> mDied) {
+    public void setDied(RealmList<RealmString> mDied) {
         this.mDied = mDied;
     }
 
-    public List<String> getTitles() {
+    public RealmList<RealmString> getTitles() {
         return mTitles;
     }
 
-    public void setTitles(List<String> mTitles) {
+    public void setTitles(RealmList<RealmString> mTitles) {
         this.mTitles = mTitles;
     }
 
-    public List<String> getAliases() {
+    public RealmList<RealmString> getAliases() {
         return mAliases;
     }
 
-    public void setAliases(List<String> mAliases) {
+    public void setAliases(RealmList<RealmString> mAliases) {
         this.mAliases = mAliases;
     }
 
@@ -158,43 +138,43 @@ public class Character extends RealmObject {
         this.mSpouse = mSpouse;
     }
 
-    public List<String> getAllegiances() {
+    public RealmList<RealmString> getAllegiances() {
         return mAllegiances;
     }
 
-    public void setAllegiances(List<String> mAllegiances) {
+    public void setAllegiances(RealmList<RealmString> mAllegiances) {
         this.mAllegiances = mAllegiances;
     }
 
-    public List<String> getBooks() {
+    public RealmList<RealmString> getBooks() {
         return mBooks;
     }
 
-    public void setBooks(List<String> mBooks) {
+    public void setBooks(RealmList<RealmString> mBooks) {
         this.mBooks = mBooks;
     }
 
-    public List<String> getPovBooks() {
+    public RealmList<RealmString> getPovBooks() {
         return mPovBooks;
     }
 
-    public void setPovBooks(List<String> mPovBooks) {
+    public void setPovBooks(RealmList<RealmString> mPovBooks) {
         this.mPovBooks = mPovBooks;
     }
 
-    public List<String> getTvSeries() {
+    public RealmList<RealmString> getTvSeries() {
         return mTvSeries;
     }
 
-    public void setTvSeries(List<String> mTvSeries) {
+    public void setTvSeries(RealmList<RealmString> mTvSeries) {
         this.mTvSeries = mTvSeries;
     }
 
-    public List<String> getPlayedBy() {
+    public RealmList<RealmString> getPlayedBy() {
         return mPlayedBy;
     }
 
-    public void setPlayedBy(List<String> mPlayedBy) {
+    public void setPlayedBy(RealmList<RealmString> mPlayedBy) {
         this.mPlayedBy = mPlayedBy;
     }
 }
