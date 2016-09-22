@@ -37,6 +37,32 @@ public class Book extends RealmObject {
     @SerializedName("povCharacters")
     private RealmList<RealmString> mPovCharacters;
 
+    public static Book create(String mUrl,
+                String mName,
+                String mIsbn,
+                RealmList<RealmString> mAuthors,
+                Integer mNumberOfPages,
+                String mPublisher,
+                String mCountry,
+                String mMediaType,
+                String mReleased,
+                RealmList<RealmString> mCharacters,
+                RealmList<RealmString> mPovCharacters) {
+        Book book = new Book();
+        book.mUrl = mUrl;
+        book.mName = mName;
+        book.mIsbn = mIsbn;
+        book.mAuthors = mAuthors;
+        book.mNumberOfPages = mNumberOfPages;
+        book.mPublisher = mPublisher;
+        book.mCountry = mCountry;
+        book.mMediaType = mMediaType;
+        book.mReleased = mReleased;
+        book.mCharacters = mCharacters;
+        book.mPovCharacters = mPovCharacters;
+        return book;
+    }
+
     @NonNull
     public String getUrl() {
         return mUrl;

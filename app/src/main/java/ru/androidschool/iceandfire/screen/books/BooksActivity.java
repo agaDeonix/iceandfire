@@ -9,13 +9,14 @@ import android.support.v7.widget.Toolbar;
 import com.androidquery.AQuery;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import ru.androidschool.iceandfire.R;
 import ru.androidschool.iceandfire.content.Book;
+import ru.androidschool.iceandfire.screen.characters.CharactersActivity;
 import ru.androidschool.iceandfire.screen.general.LoadingDialog;
 import ru.androidschool.iceandfire.screen.general.LoadingView;
 import ru.androidschool.iceandfire.widget.BaseAdapter;
-import ru.androidschool.iceandfire.widget.DividerItemDecoration;
 import ru.androidschool.iceandfire.widget.EmptyRecyclerView;
 import ru.arturvasilov.rxloader.LifecycleHandler;
 import ru.arturvasilov.rxloader.LoaderLifecycleHandler;
@@ -42,7 +43,7 @@ public class BooksActivity extends AppCompatActivity implements BaseAdapter.OnIt
 
         EmptyRecyclerView recyclerView = (EmptyRecyclerView) mAq.id(R.id.recyclerView).getView();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.addItemDecoration(new DividerItemDecoration(this));
+//        recyclerView.addItemDecoration(new DividerItemDecoration(this));
         recyclerView.setEmptyView(mAq.id(R.id.empty).getView());
 
         mAdapter = new BooksAdapter(new ArrayList<>());
@@ -57,7 +58,7 @@ public class BooksActivity extends AppCompatActivity implements BaseAdapter.OnIt
 
     @Override
     public void onItemClick(@NonNull Book item) {
-
+        mPresenter.onItemClick(item);
     }
 
     @Override
@@ -73,5 +74,15 @@ public class BooksActivity extends AppCompatActivity implements BaseAdapter.OnIt
     @Override
     public void showError() {
         mAdapter.clear();
+    }
+
+    @Override
+    public void showCharacters(Book book) {
+        CharactersActivity.start(this, book);
+    }
+
+    @Override
+    public void showBooks(List<Book> books) {
+        mAdapter.changeDataSet(books);
     }
 }

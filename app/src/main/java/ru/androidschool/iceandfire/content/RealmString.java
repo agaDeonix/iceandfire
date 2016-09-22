@@ -8,4 +8,11 @@ import io.realm.RealmObject;
 
 public class RealmString extends RealmObject {
     public String value;
+
+    public RealmString(String value) {
+        this.value = value;
+    }
+
+    public RealmString() {
+    }
 }
