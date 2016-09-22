@@ -20,6 +20,7 @@
             android:clipToPadding="false"
             android:overScrollMode="never"
             android:paddingTop="?attr/actionBarSize"
+            android:paddingBottom="@dimen/margin_10"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
         <TextView

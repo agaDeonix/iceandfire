@@ -3,4 +3,8 @@
 
     <string name="loading">Загрузка…</string>
     <string name="empty_repositories">Книги не удалось загрузить</string>
+    <string name="isbn_title">ISBN:</string>
+    <string name="count_page_title">Страниц:</string>
+    <string name="authors_title">Авторы:</string>
+    <string name="year_title">Год издания:</string>
 </resources>
