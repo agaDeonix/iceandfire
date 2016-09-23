@@ -14,9 +14,9 @@ import rx.Observable;
 
 public interface IceAndFireService {
 
-    @GET("/books?pageSize=50")
+    @GET("books?pageSize=50")
     Observable<List<Book>> getBooks();
 
-    @GET("/characters/{character}")
+    @GET("characters/{character}")
     Observable<Character> getCharacter(@Path("character") String characters);
 }

@@ -6,8 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.realm.RealmList;
+import ru.androidschool.iceandfire.R;
 import ru.androidschool.iceandfire.content.Book;
 import ru.androidschool.iceandfire.content.RealmString;
+import ru.androidschool.iceandfire.repository.DefaultBookRepository;
 import ru.arturvasilov.rxloader.LifecycleHandler;
 
 /**
@@ -25,13 +27,12 @@ public class BooksPresenter {
     }
 
     public void init() {
-//        BookProvider.provideBookRepository()
-//                .repositories()
-//                .doOnSubscribe(mView::showLoading)
-//                .doOnTerminate(mView::hideLoading)
-//                .compose(mLifecycleHandler.load(R.id.repositories_request))
-//                .subscribe(mView::showRepositories, throwable -> mView.showError());
-        mView.showBooks(getTestBooks());
+        new DefaultBookRepository().getBooks()
+                .doOnSubscribe(mView::showLoading)
+                .doOnTerminate(mView::hideLoading)
+                .compose(mLifecycleHandler.load(R.id.books_request))
+                .subscribe(mView::showBooks, throwable -> mView.showError());
+//        mView.showBooks(getTestBooks());
     }
 
     private List<Book> getTestBooks() {
