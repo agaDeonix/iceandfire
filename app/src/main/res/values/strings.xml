@@ -7,4 +7,5 @@
     <string name="count_page_title">Страниц:</string>
     <string name="authors_title">Авторы:</string>
     <string name="year_title">Год издания:</string>
+    <string name="empty_character_repositories">Не удалось загрузить персонажей</string>
 </resources>

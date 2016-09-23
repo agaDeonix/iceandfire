@@ -1,5 +1,7 @@
 package ru.androidschool.iceandfire.repository;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringJoiner;
@@ -38,12 +40,13 @@ public class DefaultBookRepository implements BookRepository {
 
     @Override
     public Observable<List<Character>> getCharacters(int bookId) {
-        String urlId="https://anapioficeandfire.com/api/books/".concat(bookId+"");
+        String urlId="http://www.anapioficeandfire.com/api/books/".concat(bookId+"");
         Realm realm=Realm.getDefaultInstance();
         return Observable.just(realm.copyFromRealm(realm.where(Book.class).contains("mUrl",urlId).findFirst()))
                .flatMap(book -> {
                    List<Observable<Character>> observableList=new ArrayList<Observable<Character>>();
                    for (RealmString s:book.getCharacters()){
+                       Log.d("jkj",Character.getIdFromUrl(s.value)+"");
                        observableList.add(getCharacter(Character.getIdFromUrl(s.value)));
                    }
                    return Observable.concat(observableList)
@@ -54,21 +57,20 @@ public class DefaultBookRepository implements BookRepository {
 
     @Override
     public Observable<Character> getCharacter(int id) {
-        String urlId="https://anapioficeandfire.com/api/characters/".concat(id+"");
-        Realm realm=Realm.getDefaultInstance();
-        return Observable.just(realm.copyFromRealm(realm.where(Character.class).contains("mUrl",urlId).findFirst()))
+        String urlId="http://www.anapioficeandfire.com/api/characters/".concat(id+"");
+        return Observable.just(Realm.getDefaultInstance().where(Character.class).contains("mUrl",urlId).findFirst())
                 .flatMap(character -> {
-                    if (character==null){
-                       return ApiFactory.getIceAndFireService()
-                               .getCharacter(id+"")
-                               .flatMap(character1 -> {
-                                   Realm.getDefaultInstance().executeTransaction(realm1 -> realm1.insert(character1));
-                                   return Observable.just(character1);
-                               });
+                    if (character!=null){
+                        Realm realm=Realm.getDefaultInstance();
+                        return Observable.just(realm.copyFromRealm(realm.getDefaultInstance().where(Character.class).contains("mUrl",urlId).findFirst()));
                     }else{
-                        return Observable.just(character);
+                        return ApiFactory.getIceAndFireService()
+                                .getCharacter(id+"")
+                                .flatMap(character1 -> {
+                                    Realm.getDefaultInstance().executeTransaction(realm1 -> realm1.insert(character1));
+                                    return Observable.just(character1);
+                                });
                     }
-                })
-                .compose(RxUtils.async());
+                });
     }
 }

@@ -1,6 +1,7 @@
 package ru.androidschool.iceandfire.content;
 
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -26,7 +27,7 @@ public class Character extends RealmObject {
     @SerializedName("born")
     private String mBorn;
     @SerializedName("died")
-    private RealmList<RealmString> mDied;
+    private String mDied;
     @SerializedName("titles")
     private RealmList<RealmString> mTitles;
     @SerializedName("aliases")
@@ -90,11 +91,11 @@ public class Character extends RealmObject {
         this.mBorn = mBorn;
     }
 
-    public RealmList<RealmString> getDied() {
+    public String getDied() {
         return mDied;
     }
 
-    public void setDied(RealmList<RealmString> mDied) {
+    public void setDied(String mDied) {
         this.mDied = mDied;
     }
 
@@ -180,6 +181,6 @@ public class Character extends RealmObject {
 
     public static int getIdFromUrl(String url){
         int i=url.lastIndexOf("/");
-        return Integer.getInteger(url.substring(i+1));
+        return Integer.parseInt(url.substring(i+1));
     }
 }

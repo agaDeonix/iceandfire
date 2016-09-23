@@ -15,6 +15,7 @@ import ru.androidschool.iceandfire.R;
 import ru.androidschool.iceandfire.content.Book;
 import ru.androidschool.iceandfire.content.Character;
 import ru.androidschool.iceandfire.screen.character.CharacterActivity;
+import ru.androidschool.iceandfire.screen.characters.CharactersActivity;
 import ru.androidschool.iceandfire.screen.general.LoadingDialog;
 import ru.androidschool.iceandfire.screen.general.LoadingView;
 import ru.androidschool.iceandfire.widget.BaseAdapter;
@@ -79,8 +80,8 @@ public class BooksActivity extends AppCompatActivity implements BaseAdapter.OnIt
 
     @Override
     public void showCharacters(Book book) {
-//        CharactersActivity.start(this, book);
-        CharacterActivity.start(this, new Character());
+        CharactersActivity.start(this, book);
+//        CharacterActivity.start(this, new Character());
     }
 
     @Override

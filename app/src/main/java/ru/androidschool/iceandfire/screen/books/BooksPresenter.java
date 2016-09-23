@@ -31,7 +31,7 @@ public class BooksPresenter {
                 .doOnSubscribe(mView::showLoading)
                 .doOnTerminate(mView::hideLoading)
                 .compose(mLifecycleHandler.load(R.id.books_request))
-                .subscribe(mView::showBooks, throwable -> mView.showError());
+                .subscribe(mView::showBooks, throwable ->mView.showError());
 //        mView.showBooks(getTestBooks());
     }
 
