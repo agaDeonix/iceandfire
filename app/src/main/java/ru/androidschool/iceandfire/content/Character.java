@@ -177,4 +177,9 @@ public class Character extends RealmObject {
     public void setPlayedBy(RealmList<RealmString> mPlayedBy) {
         this.mPlayedBy = mPlayedBy;
     }
+
+    public static int getIdFromUrl(String url){
+        int i=url.lastIndexOf("/");
+        return Integer.getInteger(url.substring(i+1));
+    }
 }
