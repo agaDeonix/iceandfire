@@ -22,6 +22,9 @@
         <activity android:name=".screen.characters.CharactersActivity"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <activity android:name=".screen.character.CharacterActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>

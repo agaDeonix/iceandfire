@@ -40,7 +40,7 @@ public class BookHolder extends RecyclerView.ViewHolder {
 
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-        SimpleDateFormat outFormat = new SimpleDateFormat("dd MMMM yyyy");
+        SimpleDateFormat outFormat = new SimpleDateFormat("dd.MM.yyyy");
         try {
             Date date = format.parse(book.getReleased());
             mAq.id(R.id.year).text(outFormat.format(date));
