@@ -2,7 +2,6 @@ package ru.androidschool.iceandfire.screen.characters;
 
 import android.util.Log;
 
-import ru.androidschool.iceandfire.BuildConfig;
 import ru.androidschool.iceandfire.R;
 import ru.androidschool.iceandfire.content.Character;
 import ru.androidschool.iceandfire.repository.DefaultBookRepository;

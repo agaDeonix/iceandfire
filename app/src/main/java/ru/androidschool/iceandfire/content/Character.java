@@ -1,7 +1,6 @@
 package ru.androidschool.iceandfire.content;
 
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -48,6 +47,8 @@ public class Character extends RealmObject {
     private RealmList<RealmString> mTvSeries;
     @SerializedName("playedBy")
     private RealmList<RealmString> mPlayedBy;
+
+
 
     @NonNull
     public String getUrl() {
@@ -181,6 +182,60 @@ public class Character extends RealmObject {
 
     public static int getIdFromUrl(String url){
         int i=url.lastIndexOf("/");
-        return Integer.parseInt(url.substring(i+1));
+        return Integer.valueOf(url.substring(i+1));
+    }
+
+    public static Character createTest() {
+        Character result = new Character();
+        result.mUrl = "http=//www.anapioficeandfire.com/api/characters/2";
+        result.mName = "Walder";
+        result.mGender = "Male";
+        result.mCulture= "";
+        result.mBorn = "";
+        result.mDied = "";
+        result.mTitles= new RealmList<>();
+        result.mAliases = new RealmList<>(new RealmString("Hodor"));
+        result.mFather = "";
+        result.mMother= "";
+        result.mSpouse= "";
+        result.mAllegiances = new RealmList<>(new RealmString("http=//www.anapioficeandfire.com/api/houses/362"));
+        result.mBooks = new RealmList<>(
+                new RealmString("http=//www.anapioficeandfire.com/api/books/1"),
+                new RealmString("http=//www.anapioficeandfire.com/api/books/2"),
+                new RealmString("http=//www.anapioficeandfire.com/api/books/3"),
+                new RealmString("http=//www.anapioficeandfire.com/api/books/5"),
+                new RealmString("http=//www.anapioficeandfire.com/api/books/8")
+        );
+        result.mPovBooks = new RealmList<>();
+        result.mTvSeries = new RealmList<>(
+                new RealmString("Season 1"),
+                new RealmString("Season 2"),
+                new RealmString("Season 3"),
+                new RealmString("Season 4"),
+                new RealmString("Season 6")
+        );
+        result.mPlayedBy = new RealmList<>(new RealmString("Kristian Nairn"));
+        return result;
+    }
+
+    public Character copyTo(Character newCopy) {
+//        Character newCopy = new Character();
+        newCopy.mTvSeries = mTvSeries;
+        newCopy.mUrl = mUrl;
+        newCopy.mName = mName;
+        newCopy.mGender = mGender;
+        newCopy.mCulture = mCulture;
+        newCopy.mBooks = mBooks;
+        newCopy.mBorn = mBorn;
+        newCopy.mDied = mDied;
+        newCopy.mTitles = mTitles;
+        newCopy.mAliases = mAliases;
+        newCopy.mFather = mFather;
+        newCopy.mMother = mMother;
+        newCopy.mSpouse = mSpouse;
+        newCopy.mAllegiances = mAllegiances;
+        newCopy.mPovBooks = mPovBooks;
+        newCopy.mPlayedBy = mPlayedBy;
+        return newCopy;
     }
 }

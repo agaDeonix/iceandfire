@@ -3,8 +3,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".screen.books.BooksActivity">
 
-    <include layout="@layout/toolbar" />
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_bar_size"
+        android:background="@color/colorPrimary"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"
+        app:theme="@style/Base.Theme.AppCompat.Light.DarkActionBar">
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Character"
+            style="@style/ToolbarTitle"
+            android:textAlignment="center"
+            android:paddingLeft="-64dp" />
+
+    </android.support.v7.widget.Toolbar>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/card_character"/>
+
+        <ImageView
+            android:layout_marginBottom="@dimen/character_icon_margin"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:padding="1dp"
+            android:layout_marginTop="45dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/circle_white"
+            android:elevation="4dp"
+            android:id="@+id/gender" />
+    </RelativeLayout>
+
+
 
 </android.support.design.widget.CoordinatorLayout>

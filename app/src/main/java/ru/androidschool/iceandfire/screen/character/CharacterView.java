@@ -1,5 +1,6 @@
 package ru.androidschool.iceandfire.screen.character;
 
+import ru.androidschool.iceandfire.content.Character;
 import ru.androidschool.iceandfire.screen.general.LoadingView;
 
 /**
@@ -7,4 +8,7 @@ import ru.androidschool.iceandfire.screen.general.LoadingView;
  */
 
 public interface CharacterView extends LoadingView {
+    void showCharacter(Character character);
+
+    void showError();
 }

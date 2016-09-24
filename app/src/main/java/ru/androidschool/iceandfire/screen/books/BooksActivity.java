@@ -13,8 +13,6 @@ import java.util.List;
 
 import ru.androidschool.iceandfire.R;
 import ru.androidschool.iceandfire.content.Book;
-import ru.androidschool.iceandfire.content.Character;
-import ru.androidschool.iceandfire.screen.character.CharacterActivity;
 import ru.androidschool.iceandfire.screen.characters.CharactersActivity;
 import ru.androidschool.iceandfire.screen.general.LoadingDialog;
 import ru.androidschool.iceandfire.screen.general.LoadingView;

@@ -7,5 +7,11 @@
     <string name="count_page_title">Страниц:</string>
     <string name="authors_title">Авторы:</string>
     <string name="year_title">Год издания:</string>
+    <string name="character_title">Персонаж</string>
+    <string name="name">Имя:</string>
+    <string name="aliases">Клички:</string>
+    <string name="books">Книги:</string>
+    <string name="seasons">Сезоны:</string>
+    <string name="actors">Актеры:</string>
     <string name="empty_character_repositories">Не удалось загрузить персонажей</string>
 </resources>

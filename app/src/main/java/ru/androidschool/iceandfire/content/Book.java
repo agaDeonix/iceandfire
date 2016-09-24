@@ -153,4 +153,9 @@ public class Book extends RealmObject {
     public void setPovCharacters(RealmList<RealmString> mPovCharacters) {
         this.mPovCharacters = mPovCharacters;
     }
+
+    public static int getIdFromUrl(String url){
+        int i=url.lastIndexOf("/");
+        return Integer.valueOf(url.substring(i+1));
+    }
 }

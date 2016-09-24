@@ -4,10 +4,8 @@ import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.StringJoiner;
 
 import io.realm.Realm;
-import io.realm.RealmResults;
 import ru.androidschool.iceandfire.api.ApiFactory;
 import ru.androidschool.iceandfire.content.Book;
 import ru.androidschool.iceandfire.content.Character;
@@ -40,7 +38,7 @@ public class DefaultBookRepository implements BookRepository {
 
     @Override
     public Observable<List<Character>> getCharacters(int bookId) {
-        String urlId="http://www.anapioficeandfire.com/api/books/".concat(bookId+"");
+        String urlId=String.format("http://www.anapioficeandfire.com/api/books/%d", bookId);
         Realm realm=Realm.getDefaultInstance();
         return Observable.just(realm.copyFromRealm(realm.where(Book.class).contains("mUrl",urlId).findFirst()))
                .flatMap(book -> {
@@ -57,12 +55,12 @@ public class DefaultBookRepository implements BookRepository {
 
     @Override
     public Observable<Character> getCharacter(int id) {
-        String urlId="http://www.anapioficeandfire.com/api/characters/".concat(id+"");
+        String urlId=String.format(String.format("http://www.anapioficeandfire.com/api/characters/%d", id));
         return Observable.just(Realm.getDefaultInstance().where(Character.class).contains("mUrl",urlId).findFirst())
                 .flatMap(character -> {
                     if (character!=null){
                         Realm realm=Realm.getDefaultInstance();
-                        return Observable.just(realm.copyFromRealm(realm.getDefaultInstance().where(Character.class).contains("mUrl",urlId).findFirst()));
+                        return Observable.just(realm.copyFromRealm(realm.where(Character.class).contains("mUrl", urlId).findFirst()));
                     }else{
                         return ApiFactory.getIceAndFireService()
                                 .getCharacter(id+"")
@@ -71,6 +69,6 @@ public class DefaultBookRepository implements BookRepository {
                                     return Observable.just(character1);
                                 });
                     }
-                });
+                }).compose(RxUtils.async());
     }
 }

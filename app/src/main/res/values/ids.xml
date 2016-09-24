@@ -2,4 +2,5 @@
 <resources>
     <item name="books_request" type="id"/>
     <item name="characters_request" type="id"/>
+    <item name="character_request" type="id"/>
 </resources>
